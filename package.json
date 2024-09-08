@@ -1,0 +1,30 @@
+{
+    "name": "pizzav4",
+    "module": "index.js",
+    "type": "module",
+    "scripts": {
+        "dev": "nodemon index.js",
+        "start": "node index.js"
+    },
+    "nodemonConfig": {
+        "ignore": [
+            "sessions/**/*.*",
+            "public/**/*.*",
+            "data.*"
+        ],
+        "ext": "js,mjs,html"
+    },
+    "devDependencies": {
+        "@types/bun": "latest"
+    },
+    "peerDependencies": {
+        "typescript": "^5.0.0"
+    },
+    "dependencies": {
+        "body-parser": "^1.20.2",
+        "dotenv": "^16.4.5",
+        "express": "^4.19.2",
+        "nodemon": "^3.1.4",
+        "pocketbase": "^0.21.5"
+    }
+}
