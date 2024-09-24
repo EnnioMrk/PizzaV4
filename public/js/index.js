@@ -34,6 +34,9 @@ document.addEventListener('DOMContentLoaded', async () => {
         console.error(error);
         Swal.fire('Error', 'An error occurred', 'error');
     });
+    if (!userData.id) {
+        userData = { name: '', priority: 1 };
+    }
     if (userData.admin) {
         //window.location.replace("/admin");
         document.getElementById('adminButton').classList.remove('hidden');
@@ -46,6 +49,17 @@ document.addEventListener('DOMContentLoaded', async () => {
     let optionsContainer = document.getElementById('optionsWrapper');
     let priorityInput = document.getElementById('priorityInput');
     let priorityValue = document.getElementById('priorityValue');
+    let priorityInputWrapper = document.getElementById('priorityInputWrapper');
+    let priorityValueWrapper = document.getElementById('priorityValueWrapper');
+
+    if (userData.priorityFreeChange) {
+        userData.priority = 6;
+    }
+
+    if (!userData.priorityEnabled) {
+        priorityInputWrapper.classList.add('hidden');
+        priorityValueWrapper.classList.add('opacity-0');
+    }
 
     function changePriority(newPriority) {
         //set priorityInput value and max to priority
@@ -73,14 +87,15 @@ document.addEventListener('DOMContentLoaded', async () => {
         changePriority(userData.priority);
     }
 
-    pb.collection('users').subscribe(
-        userData.id,
-        function (e) {
-            if (priority != e.record.priority)
-                changePriority(e.record.priority);
-        },
-        {}
-    );
+    if (userData.id)
+        pb.collection('users').subscribe(
+            userData.id,
+            function (e) {
+                if (priority != e.record.priority)
+                    changePriority(e.record.priority);
+            },
+            {}
+        );
 
     let toRadians = (deg) => (deg * Math.PI) / 180;
     let map = (val, a1, a2, b1, b2) =>

@@ -5,6 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <script src="https://cdn.tailwindcss.com"></script>
+        <link rel="stylesheet" href="/css/default.css" />
         <link rel="stylesheet" href="css/style.css" />
         <script src="https://cdn.jsdelivr.net/npm/zxcvbn@4.4.2/dist/zxcvbn.js"></script>
         <script src="/dist/pocketbase"></script>
@@ -37,7 +38,7 @@
             class="flex items-center justify-center w-screen h-screen flex-col text-white"
         >
             <div
-                class="w-2/3 min-w-max lg:w-1/2 min-h-3/5 h-min transition-all border border-white/[.1] rounded-lg bg-black/[.5] flex flex-col justify-around items-center p-5"
+                class="w-2/3 lg:w-1/2 min-h-3/5 h-min transition-all border border-white/[.1] rounded-lg bg-black/[.5] flex flex-col justify-around items-center p-5"
             >
                 <!--
                 <svg
@@ -88,7 +89,7 @@
                         >
                     </div>
 
-                    <div class="h-min w-full mb-8">
+                    <div class="h-min mb-8">
                         <p class="text-red-400 hidden" id="nameError">
                             Name must contain only letters and needs to be
                             longer than 2 characters

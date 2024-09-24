@@ -41,7 +41,18 @@ export default class webServer {
             }
         }
 
-        (await import('./auth.js')).default(this.app, pb);
+        if (global.config.auth.enabled)
+            (await import('./auth.js')).default(this.app, pb);
+        else {
+            //redirect all requests to the following page to home page (login, signUp, settings)
+            this.app.use((req, res, next) => {
+                if (['/login', '/sign-up', '/settings'].includes(req.url)) {
+                    res.redirect('/');
+                } else {
+                    next();
+                }
+            });
+        }
         (await import('./dist.js')).default(this.app);
 
         this.app.use(express.static('public'));

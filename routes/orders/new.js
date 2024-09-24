@@ -42,7 +42,9 @@ export default (pb) => {
                             ingredients: i_ids,
                             options: o_ids,
                             comment: req.body.comment,
-                            priority: req.body.priority,
+                            priority: global.config.priority.reverse
+                                ? 7 - req.body.priority
+                                : req.body.priority,
                         })
                     )
                     .catch((error) => {

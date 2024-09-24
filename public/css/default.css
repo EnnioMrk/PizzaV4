@@ -1,0 +1,8 @@
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    /*remove autofill style*/
+    -webkit-box-shadow: none !important;
+    transition: background-color 0s 600000s, color 0s 600000s !important;
+}

@@ -4,6 +4,7 @@
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="/css/default.css" />
         <link rel="stylesheet" href="css/style.css" />
         <script src="https://cdn.tailwindcss.com"></script>
         <script src="/dist/pocketbase"></script>
@@ -19,7 +20,8 @@
         >
             <nav class="w-full flex justify-between items-center h-min">
                 <div
-                    class="text-white flex h-min bg-black/[.1] border border-white/[.1] shadow-md rounded-md font-semibold font-mono text-[3.5vmin]"
+                    class="text-white flex h-min bg-black/[.1] border border-white/[.1] shadow-md rounded-md font-semibold font-mono text-[3.5vmin] max-w-[20vmin]"
+                    id="priorityValueWrapper"
                 >
                     <p class="mr-2 p-2">PRIORITY</p>
                     <span
@@ -103,7 +105,7 @@
                             oninput="autoGrow(this)"
                         ></textarea>
                     </div>
-                    <div class="mb-6">
+                    <div class="mb-6" id="priorityInputWrapper">
                         <h2 class="text-white text-5xl font-ghostink mb-2">
                             Priority: <span id="priorityValue">3</span>
                         </h2>

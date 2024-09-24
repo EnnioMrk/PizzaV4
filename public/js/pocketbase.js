@@ -107,7 +107,7 @@ function signUpWithPassword(email, name, password) {
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ email, name, password }),
+            body: JSON.stringify({ email, name, password, priority: 1 }),
         })
             .then((res) => {
                 if (!res.ok) {
