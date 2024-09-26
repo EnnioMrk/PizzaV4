@@ -55,37 +55,44 @@ document.addEventListener('DOMContentLoaded', async () => {
     window.location.href = "/createName";
     return;
   }*/
+    let pPWrapper = document.getElementById('pPWrapper');
     let userData = await getUserData().catch((error) => {
         console.error(error);
         Swal.fire('Error', 'An error occurred', 'error');
     });
+    if (!userData.id) {
+        userData = { name: '', priority: 1 };
+        pPWrapper.classList.add('hidden');
+        document.getElementById('greeting').classList.add('hidden');
+        document.getElementById('users').classList.add('hidden');
+    } else {
+        document.getElementById('editButton').addEventListener('click', () => {
+            //click #profilePictureInput
+            document.getElementById('profilePictureInput').click();
+        });
+
+        document
+            .getElementById('profilePictureInput')
+            .addEventListener('change', (event) => {
+                changeProfilePicture(event);
+            });
+
+        if (userData.user_metadata?.avatar_url) {
+            document.getElementById('pPWrapper').firstElementChild.src =
+                userData.user_metadata.avatar_url.replace(
+                    'mystical/',
+                    'mystical/tr:f-jpg,pr-true/'
+                );
+        } else {
+            let emailHash = md5(userData.email.toLowerCase());
+            document.getElementById('pPWrapper').firstElementChild.src =
+                'https://www.gravatar.com/avatar/' + emailHash + '?d=mp';
+        }
+    }
 
     console.log(userData);
 
-    document.getElementById('editButton').addEventListener('click', () => {
-        //click #profilePictureInput
-        document.getElementById('profilePictureInput').click();
-    });
-
-    document
-        .getElementById('profilePictureInput')
-        .addEventListener('change', (event) => {
-            changeProfilePicture(event);
-        });
-
     document.getElementById('name').innerHTML = userData.name;
-
-    if (userData.user_metadata?.avatar_url) {
-        document.getElementById('pPWrapper').firstElementChild.src =
-            userData.user_metadata.avatar_url.replace(
-                'mystical/',
-                'mystical/tr:f-jpg,pr-true/'
-            );
-    } else {
-        let emailHash = md5(userData.email.toLowerCase());
-        document.getElementById('pPWrapper').firstElementChild.src =
-            'https://www.gravatar.com/avatar/' + emailHash + '?d=mp';
-    }
 });
 
 function fadeOutSection(section, callback = () => {}) {

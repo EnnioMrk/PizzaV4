@@ -27,7 +27,7 @@ export default (pb) => {
                     .map((r) => r.id);
 
                 let o_ids = [];
-                if (req.body.options)
+                if (req.body.options?.length > 0)
                     o_ids = record.expand.options
                         .filter((r) => req.body.options.includes(r.name))
                         .map((r) => r.id);
@@ -72,7 +72,7 @@ export default (pb) => {
                     });
             })
             .catch((error) => {
-                log('session error', error);
+                console.error(error);
                 return res.status(400).json({ message: 'Session not found' });
             });
     };

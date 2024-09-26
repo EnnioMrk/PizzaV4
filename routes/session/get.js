@@ -2,14 +2,18 @@ import log from '../../managers/logger.js';
 
 export default (pb) => {
     return async (req, res) => {
+        let dateBefore = new Date(
+            new Date().getTime() - 1000 * 60 * 60 * global.config.sessionTimeout
+        )
+            .toISOString()
+            .replace('T', ' ');
+        dateBefore = dateBefore.slice(0, dateBefore.length - 5);
+        log('info', dateBefore);
         pb.collection('sessions')
-            .getFirstListItem(
-                `active=true && updated > ${new Date() - 1000 * 60 * 60 * 12}`,
-                {
-                    sort: '-created',
-                    expand: 'ingredients,options,orders',
-                }
-            )
+            .getFirstListItem(`active=true && updated >= "${dateBefore}"`, {
+                sort: '-created',
+                expand: 'ingredients,options,orders',
+            })
             .then((record) => {
                 //check if last create session is still active (less than 1 hour)
                 if (!record) {
@@ -34,6 +38,7 @@ export default (pb) => {
                 });
             })
             .catch((error) => {
+                console.error(error);
                 return res
                     .status(400)
                     .json({ error: 'No active session found' });

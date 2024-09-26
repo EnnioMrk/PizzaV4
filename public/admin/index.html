@@ -40,77 +40,76 @@
                 Pizza
             </h1>
             <div
-                class="h-3/4 min-h-[75vmin] w-[90vmin] max-w-[50vh] border border-white/[.1] rounded-lg bg-black/[.5] flex flex-col justify-around items-center p-5 m-auto"
+                class="h-fit w-[90vmin] max-w-[50vh] border border-white/[.1] rounded-lg bg-black/[.5] flex flex-col justify-around items-center p-5 m-auto"
             >
-                <div>
-                    <div id="pPWrapper">
-                        <img
-                            id="profilePicture"
-                            src="https://st3.depositphotos.com/6672868/13701/v/600/depositphotos_137014128-stock-illustration-user-profile-icon.jpg"
-                            alt="profile picture"
-                            class="rounded-full h-32 w-32 border-pastel-3 border-2 object-cover object-center mx-auto"
-                        />
-                        <input type="file" id="profilePictureInput" hidden />
-                        <div
-                            id="editButton"
-                            class="w-8 h-8 mx-auto -translate-y-10 translate-x-11 bg-pastel-2 rounded-full p-1.5 cursor-pointer hover:scale-110 transition-all"
-                        >
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke-width="1.5"
-                                stroke="currentColor"
-                                class="w-5 h-5 text-white"
-                            >
-                                <path
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L6.832 19.82a4.5 4.5 0 01-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 011.13-1.897L16.863 4.487zm0 0L19.5 7.125"
-                                />
-                            </svg>
-                        </div>
-                    </div>
-
+                <div id="pPWrapper" class="my-4">
+                    <img
+                        id="profilePicture"
+                        src="https://st3.depositphotos.com/6672868/13701/v/600/depositphotos_137014128-stock-illustration-user-profile-icon.jpg"
+                        alt="profile picture"
+                        class="rounded-full h-32 w-32 border-pastel-3 border-2 object-cover object-center mx-auto"
+                    />
+                    <input type="file" id="profilePictureInput" hidden />
                     <div
-                        class="w-max h-min flex items-center font-semibold font-ghostink text-4xl"
+                        id="editButton"
+                        class="w-8 h-8 mx-auto -translate-y-10 translate-x-11 bg-pastel-2 rounded-full p-1.5 cursor-pointer hover:scale-110 transition-all"
                     >
-                        <h1>Hallo&nbsp;</h1>
-                        <p id="name"></p>
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke-width="1.5"
+                            stroke="currentColor"
+                            class="w-5 h-5 text-white"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L6.832 19.82a4.5 4.5 0 01-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 011.13-1.897L16.863 4.487zm0 0L19.5 7.125"
+                            />
+                        </svg>
                     </div>
                 </div>
 
+                <div
+                    class="w-max h-min my-4 flex items-center font-semibold font-ghostink text-4xl"
+                    id="greeting"
+                >
+                    <h1>Hallo&nbsp;</h1>
+                    <p id="name"></p>
+                </div>
+
                 <button
-                    class="w-1/2 h-min max-h-8 p-2 rounded-sm flex items-center justify-center font-semibold text-white bg-pastel-3 shadow-xl shadow-pastel-2 transition-all hover:shadow-pastel-2 hover:shadow-lg hover:translate-y-1 active:shadow-md active:translate-y-2 mb-5 hidden"
+                    class="w-1/2 h-min my-4 max-h-8 p-2 rounded-sm flex items-center justify-center font-semibold text-white bg-pastel-3 shadow-xl shadow-pastel-2 transition-all hover:shadow-pastel-2 hover:shadow-lg hover:translate-y-1 active:shadow-md active:translate-y-2 hidden"
                     id="continueSession"
                     onclick="fadeOutSection(this.parentElement, showCurrentSession())"
                 >
                     CONTINUE SESSION
                 </button>
                 <button
-                    class="w-1/2 h-1/4 max-h-8 p-2 rounded-sm flex items-center justify-center font-semibold text-white bg-pastel-3 shadow-xl shadow-pastel-2 transition-all hover:shadow-pastel-2 hover:shadow-lg hover:translate-y-1 active:shadow-md active:translate-y-2 mb-5"
+                    class="w-1/2 h-1/4 my-4 max-h-8 p-2 rounded-sm flex items-center justify-center font-semibold text-white bg-pastel-3 shadow-xl shadow-pastel-2 transition-all hover:shadow-pastel-2 hover:shadow-lg hover:translate-y-1 active:shadow-md active:translate-y-2"
                     id="newSession"
                     onclick="fadeOutSection(this.parentElement, () => window.location.href = '/admin/createSession')"
                 >
                     NEW SESSION
                 </button>
                 <button
-                    class="w-1/2 h-1/4 max-h-8 p-2 rounded-sm flex items-center justify-center font-semibold text-white bg-pastel-3 shadow-xl shadow-pastel-2 transition-all hover:shadow-pastel-2 hover:shadow-lg hover:translate-y-1 active:shadow-md active:translate-y-2 mb-5"
+                    class="w-1/2 h-1/4 my-4 max-h-8 p-2 rounded-sm flex items-center justify-center font-semibold text-white bg-pastel-3 shadow-xl shadow-pastel-2 transition-all hover:shadow-pastel-2 hover:shadow-lg hover:translate-y-1 active:shadow-md active:translate-y-2"
                     id="ingredients"
                     onclick="fadeOutSection(this.parentElement, () => window.location.href = '/admin/ingredients')"
                 >
                     INGREDIENTS
                 </button>
                 <button
-                    class="w-1/2 h-1/4 max-h-8 p-2 rounded-sm flex items-center justify-center font-semibold text-white bg-pastel-3 shadow-xl shadow-pastel-2 transition-all hover:shadow-pastel-2 hover:shadow-lg hover:translate-y-1 active:shadow-md active:translate-y-2 mb-5"
+                    class="w-1/2 h-1/4 my-4 max-h-8 p-2 rounded-sm flex items-center justify-center font-semibold text-white bg-pastel-3 shadow-xl shadow-pastel-2 transition-all hover:shadow-pastel-2 hover:shadow-lg hover:translate-y-1 active:shadow-md active:translate-y-2"
                     id="options"
                     onclick="fadeOutSection(this.parentElement, () => window.location.href = '/admin/options')"
                 >
                     OPTIONS
                 </button>
                 <button
-                    class="w-1/2 h-min p-2 rounded-sm flex items-center justify-center font-semibold text-white bg-pastel-3 shadow-xl shadow-pastel-2 transition-all hover:shadow-pastel-2 hover:shadow-lg hover:translate-y-1 active:shadow-md active:translate-y-2 mb-5"
-                    id="options"
+                    class="w-1/2 h-min my-4 p-2 rounded-sm flex items-center justify-center font-semibold text-white bg-pastel-3 shadow-xl shadow-pastel-2 transition-all hover:shadow-pastel-2 hover:shadow-lg hover:translate-y-1 active:shadow-md active:translate-y-2"
+                    id="users"
                     onclick="fadeOutSection(this.parentElement, () => window.location.href = '/admin/users')"
                 >
                     USER MANAGEMENT

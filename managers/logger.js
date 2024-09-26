@@ -44,6 +44,12 @@ export default function log(
     }
     const color = color_dict.get(type) || 'white';
     let log_type = log_type_dict.get(type) || console.log;
+    if (type == 'Error') {
+        process.stdout.write(
+            `[${newTimestamp()}]${chalk[color](`[${type.toUpperCase()}]`)} `
+        );
+        log_type(message);
+    }
     switch (typeof message) {
         case 'string':
             message = chalk[color](message);

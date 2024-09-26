@@ -20,15 +20,17 @@ export default (pb) => {
 
         log(records);
 
-        let i_ids = records
-            .filter((r) => req.body.ingredients.includes(r.name))
-            .map((r) => r.id);
+        let i_ids =
+            records
+                ?.filter((r) => req.body.ingredients.includes(r.name))
+                ?.map((r) => r.id) || [];
 
         let o_ids = [];
         if (req.body.options)
-            o_ids = records
-                .filter((r) => req.body.options.includes(r.name))
-                .map((r) => r.id);
+            o_ids =
+                records
+                    ?.filter((r) => req.body.options.includes(r.name))
+                    ?.map((r) => r.id) || [];
 
         log(i_ids);
         log(o_ids);
@@ -39,6 +41,7 @@ export default (pb) => {
                     ingredients: i_ids,
                     options: o_ids,
                     orders: [],
+                    active: true,
                 })
             )
             .catch((error) => {

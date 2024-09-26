@@ -28,6 +28,7 @@ tailwind.config = {
 };
 
 let priority = 1;
+let sessionId = '';
 
 document.addEventListener('DOMContentLoaded', async () => {
     let userData = await getUserData().catch((error) => {
@@ -47,6 +48,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     let selectableTemplate = document.getElementById('selectableTemplate');
     let ingredientsContainer = document.getElementById('ingredientsWrapper');
     let optionsContainer = document.getElementById('optionsWrapper');
+    let settingsButton = document.getElementById('settingsButton');
     let priorityInput = document.getElementById('priorityInput');
     let priorityValue = document.getElementById('priorityValue');
     let priorityInputWrapper = document.getElementById('priorityInputWrapper');
@@ -59,6 +61,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (!userData.priorityEnabled) {
         priorityInputWrapper.classList.add('hidden');
         priorityValueWrapper.classList.add('opacity-0');
+        settingsButton.classList.add('opacity-0');
     }
 
     function changePriority(newPriority) {
@@ -257,6 +260,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             console.log(data);
             loadSelectable(data.ingredients);
             loadSelectable(data.options, 1);
+            sessionId = data.id;
         })
         .catch((err) => {
             console.log('No current session');
@@ -317,6 +321,7 @@ function orderPizza() {
         body: JSON.stringify({
             name: document.getElementById('nameInput').value,
             comment: document.getElementById('commentInput').value,
+            sessionId,
             ingredients,
             options,
             priority,
@@ -325,3 +330,5 @@ function orderPizza() {
         .then((res) => res.json())
         .then((data) => console.log(data));
 }
+
+//The body must contain a name, ingredients, priority and a sessionId (and optionally a comment ands options)
